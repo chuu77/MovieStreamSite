@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <script src="index.js" defer></script>
+    <script
+      src="https://kit.fontawesome.com/0e72a1d6a5.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <section>
+      <nav>
+        <div class="nav__container">
+          <h2 class="nav__logo">MovieCave</h2>
+          <ul class="nav__links">
+            <li><a href="./index.html" class="nav__link">Home</a></li>
+            <li><a href="#" class="nav__link">Movies</a></li>
+            <li>
+              <a href="#" class="nav__link">Watchlist</a>
+            </li>
+            <li>
+              <a href="#" class="nav__link">Sign In</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <header>
+        <div class="header__container">
+          <div class="row">
+            <div class="header__description">
+              <h1 class="header__title">
+                Your <span class="orange">#1 stop</span> for streaming movies
+                <span class="orange">on demand.</span>
+              </h1>
+              <p class="header__para">
+                Browse through our collection and let us help you find the
+                perfect movie to watch tonight for free!
+              </p>
+              <div class="search__bar">
+                <input
+                  type="text"
+                  id="search__input"
+                  placeholder="Search Here"
+                  onchange="onSearchChange(event)"
+                />
+                <i class="fa-solid fa-magnifying-glass search__button"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </section>
+    <section id="recent">
+      <div class="container">
+        <div class="row movie__row">
+          <div class="search__filters">
+            <div class="search__bar--main">
+              <input
+                type="text"
+                id="search__input"
+                placeholder="Search Here"
+                onchange="onSearchChange(event)"
+              />
+              <i class="fa-solid fa-magnifying-glass search__button"></i>
+            </div>
+            <select name="" id="filter" onchange="filterMovies(event)">
+              <option value="" disabled selected>Sort</option>
+              <option value="NEW_TO_OLD">Newest</option>
+              <option value="OLD_TO_NEW">Oldest</option>
+            </select>
+          </div>
+          <div class="movies movies__loading">
+            <i class="fas fa-spinner movies__loading--spinner"></i>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
