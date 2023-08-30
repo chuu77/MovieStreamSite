@@ -41,13 +41,21 @@
                 perfect movie to watch tonight for free!
               </p>
               <div class="search__bar">
-                <input
-                  type="text"
-                  id="search__input"
-                  placeholder="Search Here"
-                  onchange="onSearchChange(event)"
-                />
-                <i class="fa-solid fa-magnifying-glass search__button"></i>
+                <form
+                  id="searchForm"
+                  class="search-form"
+                  onsubmit="onSearchSubmit(event); return false;"
+                >
+                  <input
+                    type="text"
+                    id="search__input"
+                    placeholder="Search Here"
+                  />
+                  <i
+                    class="fa-solid fa-magnifying-glass search__button"
+                    onclick="onSearchSubmit(event); return false;"
+                  ></i>
+                </form>
               </div>
             </div>
           </div>
@@ -58,23 +66,17 @@
       <div class="container">
         <div class="row movie__row">
           <div class="search__filters">
-            <div class="search__bar--main">
-              <input
-                type="text"
-                id="search__input"
-                placeholder="Search Here"
-                onchange="onSearchChange(event)"
-              />
-              <i class="fa-solid fa-magnifying-glass search__button"></i>
-            </div>
+            <div class="search__bar--main"></div>
             <select name="" id="filter" onchange="filterMovies(event)">
               <option value="" disabled selected>Sort</option>
               <option value="NEW_TO_OLD">Newest</option>
               <option value="OLD_TO_NEW">Oldest</option>
             </select>
           </div>
-          <div class="movies movies__loading">
-            <i class="fas fa-spinner movies__loading--spinner"></i>
+          <div class="movies">
+            <div class="movies__loading">
+              <i class="fas fa-spinner movies__loading--spinner"></i>
+            </div>
           </div>
         </div>
       </div>
