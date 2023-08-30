@@ -18,14 +18,45 @@
           <h2 class="nav__logo">MovieCave</h2>
           <ul class="nav__links">
             <li><a href="./index.html" class="nav__link">Home</a></li>
-            <li><a href="#" class="nav__link">Movies</a></li>
+            <li><a href="#" class="nav__link no-cursor">Movies</a></li>
             <li>
-              <a href="#" class="nav__link">Watchlist</a>
+              <a href="#" class="nav__link no-cursor">Watchlist</a>
             </li>
             <li>
-              <a href="#" class="nav__link">Sign In</a>
+              <a href="#" class="nav__link no-cursor">Sign In</a>
             </li>
           </ul>
+
+          <button class="btn__menu" onclick="openMenu()">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="menu__backdrop">
+            <button class="btn__menu btn__menu--close" onclick="closeMenu()">
+              <i class="fas fa-times"></i>
+            </button>
+            <ul class="menu__links">
+              <li class="menu__list">
+                <a href="./index.html" class="menu__link" onclick="closeMenu()"
+                  >Home</a
+                >
+              </li>
+              <li class="menu__list">
+                <a href="#" class="menu__link no-cursor" onclick="closeMenu()"
+                  >Movies</a
+                >
+              </li>
+              <li class="menu__list">
+                <a href="#" class="menu__link no-cursor" onclick="closeMenu()"
+                  >Watchlist</a
+                >
+              </li>
+              <li class="menu__list">
+                <a href="#" class="menu__link no-cursor" onclick="closeMenu()"
+                  >Sign In</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
       <header>
@@ -74,9 +105,7 @@
             </select>
           </div>
           <div class="movies">
-            <div class="movies__loading">
-              <i class="fas fa-spinner movies__loading--spinner"></i>
-            </div>
+            <i class="fas fa-spinner movies__loading--spinner"></i>
           </div>
         </div>
       </div>

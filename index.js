@@ -1,6 +1,8 @@
+const apiKey = "e102b275";
 const moviesWrapper = document.querySelector(".movies");
 const headingWrapper = document.querySelector(".header__description");
 let moviesData = {};
+let currentFilter = "NEW_TO_OLD";
 
 function onSearchSubmit(event) {
   event.preventDefault();
@@ -25,29 +27,35 @@ function removeSearch() {
 async function fetchMovies(search) {
   moviesWrapper.classList += " movies__loading";
   const movies = await fetch(
-    `https://www.omdbapi.com/?apikey=e102b275&s=${search}`
+    `https://www.omdbapi.com/?apikey=${apiKey}&s=${search}`
   );
+
   moviesData = await movies.json();
+
   console.log(moviesData);
   moviesWrapper.classList.remove("movies__loading");
-  renderMovies();
+  setTimeout(() => {
+    renderMovies();
+  });
 }
 
 function renderMovies() {
-  if (filter === "OLD_TO_NEW") {
-    moviesData.Search.sort((a, b) => a.Year - b.Year);
+  let sortedMovies = [...moviesData.Search];
+  if (currentFilter === "OLD_TO_NEW") {
+    sortedMovies.sort((a, b) => a.Year - b.Year);
   }
-  if (filter === "NEW_TO_OLD") {
-    moviesData.Search.sort((a, b) => b.Year - a.Year);
+  if (currentFilter === "NEW_TO_OLD") {
+    sortedMovies.sort((a, b) => b.Year - a.Year);
   }
-  moviesWrapper.innerHTML = moviesData.Search.map((movie) =>
-    moviesHTML(movie)
-  ).join("");
+
+  moviesWrapper.innerHTML = sortedMovies
+    .map((movie) => moviesHTML(movie))
+    .join("");
 }
 
 function filterMovies(event) {
   event.preventDefault();
-  const filter = event.target.value;
+  currentFilter = event.target.value;
   renderMovies();
 }
 
@@ -56,6 +64,14 @@ function moviesHTML(movie) {
   <figure class="movie__img--wrapper">
     <img src="${movie.Poster}" class="movie__img" alt="${movie.Title}" />
   </figure>
-  <div class="movie__title">${movie.Title}</div>
+  <div class="movie__title">${movie.Title} (${movie.Year})</div>
 </div>`;
+}
+
+function openMenu() {
+  document.body.classList += " menu--open";
+}
+
+function closeMenu() {
+  document.body.classList.remove("menu--open");
 }
