@@ -16,16 +16,13 @@ function onSearchSubmit(event) {
 function onSearchChange(search) {
   console.log(search);
   fetchMovies(search);
-  removeSearch();
+  displayFilter();
   headingWrapper.classList.add("search__performed");
-}
-
-function removeSearch() {
-  headingWrapper.classList.remove("search__bar");
 }
 
 async function fetchMovies(search) {
   moviesWrapper.classList += " movies__loading";
+
   const movies = await fetch(
     `https://www.omdbapi.com/?apikey=${apiKey}&s=${search}`
   );
@@ -34,9 +31,7 @@ async function fetchMovies(search) {
 
   console.log(moviesData);
   moviesWrapper.classList.remove("movies__loading");
-  setTimeout(() => {
-    renderMovies();
-  });
+  renderMovies();
 }
 
 function renderMovies() {
@@ -74,4 +69,8 @@ function openMenu() {
 
 function closeMenu() {
   document.body.classList.remove("menu--open");
+}
+
+function displayFilter() {
+  document.body.classList += " display--filter";
 }

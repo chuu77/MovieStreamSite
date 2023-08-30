@@ -255,6 +255,18 @@ RECENT
   flex-wrap: wrap;
 }
 
+.recent__movies {
+  margin-top: 42px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.remove--recent .recent__movies {
+  display: none;
+}
+
 .movie__img {
   transition: all 300ms ease;
   height: 420px;
@@ -322,6 +334,13 @@ MAIN
   height: 40px;
   padding: 0 16px;
   outline: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.display--filter #filter {
+  opacity: 1;
+  visibility: visible;
 }
 
 .movies__loading {
